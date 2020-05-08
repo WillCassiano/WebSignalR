@@ -1,0 +1,41 @@
+﻿@page
+<div class="container">
+    <div class="d-flex">
+        <div class="d-flex flex-column" style="width: 800px">
+            <div style="height: 400px">
+                <div class="row">
+                    <div class="col-6">
+                        <ul id="mensagemLista">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-2">Usuário</div>
+                    <div class="col-4">
+                        <input type="text" id="usuarioInput" value="" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">Mensagem</div>
+                    <div class="col-4">
+                        <input type="text" id="mensagemInput" value="" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <input type="button" id="enviarButton" value="Enviar Mensagem" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            Contatos
+            <ul id="usuarioLista">
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
