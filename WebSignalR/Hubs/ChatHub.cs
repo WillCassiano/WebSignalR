@@ -24,5 +24,11 @@ namespace WebSignalR.Hubs
             hashUser.Add(this.Context.ConnectionId, name);
             await Clients.All.SendAsync("NewUserAdd", name);
         }
+
+        public override async Task OnDisconnectedAsync(Exception exception)
+        {
+            var user = hashUser[this.Context.ConnectionId];
+            await Clients.All.SendAsync("UserDesconnected", user);
+        }
     }
 }

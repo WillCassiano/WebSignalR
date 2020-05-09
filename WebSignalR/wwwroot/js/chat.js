@@ -9,7 +9,7 @@ enviarButton.disabled = true;
 
 connection.on("ReceberMensagem", function (usuario, mensagem) {
     var msg = mensagem.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = usuario + " disse " + msg;
+    var encodedMsg = usuario + " disse: " + msg;
     var li = document.createElement("li");
     li.textContent = encodedMsg;
     document.getElementById("mensagemLista").appendChild(li);
@@ -18,7 +18,13 @@ connection.on("ReceberMensagem", function (usuario, mensagem) {
 connection.on("NewUserAdd", function (name) {
     var li = document.createElement("li");
     li.textContent = name;
+    li.className = name;
     document.getElementById("usuarioLista").appendChild(li);
+});
+
+connection.on("UserDesconnected", function (usuario) {
+    var li = document.getElementsByClassName(usuario)[0];
+    document.getElementById("usuarioLista").removeChild(li);
 });
 
 connection.start().then(function () {
